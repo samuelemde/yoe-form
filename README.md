@@ -133,7 +133,7 @@ The following variants are available:
 </template>
 ```
 
-### Nuxt
+### React
 ```typescript jsx
 const Form = () => {
     const handleEmail = () => {
