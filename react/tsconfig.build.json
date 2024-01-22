@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "sourceMap": false,
+    "esModuleInterop": true,
+    "declaration": false,
+    "baseUrl": "./src",
+    "skipLibCheck": true
+  },
+  "exclude": [ "src/**/*.test.ts", "node_modules", "src/App.tsx", "vite.config.ts", "components.json", "src/main.tsx"]
+}

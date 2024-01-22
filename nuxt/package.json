@@ -1,0 +1,60 @@
+{
+  "name": "@yoe-form/nuxt",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./style.css": "./dist/style.css",
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --emptyOutDir",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@formkit/auto-animate": "^0.8.1",
+    "@radix-icons/vue": "^1.0.0",
+    "@vueuse/core": "^10.7.2",
+    "@yoe-form/shared": "0.0.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "date-fns": "^3.2.0",
+    "radix-vue": "^1.3.1",
+    "tailwind-merge": "^2.2.0",
+    "tailwindcss-animate": "^1.0.7",
+    "v-calendar": "^3.1.2",
+    "vee-validate": "^4.12.4",
+    "yup": "^1.3.3"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.6.1",
+    "@tailwindcss/forms": "^0.5.7",
+    "@types/node": "^20.11.2",
+    "@types/tailwindcss": "^3.1.0",
+    "@vitejs/plugin-vue": "^4.5.2",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "postcss": "^8.4.33",
+    "prettier": "^3.2.2",
+    "rollup-plugin-visualizer": "^5.12.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.12",
+    "vite-plugin-dts": "^3.7.1",
+    "vue-tsc": "^1.8.27"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.31"
+  }
+}
