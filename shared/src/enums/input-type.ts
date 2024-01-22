@@ -5,6 +5,7 @@ export const InputType = {
   textarea: "textarea",
   number: "number",
   checkbox: "checkbox",
+  switch: "switch",
   select: "select",
   radio: "radio",
   date: "date",

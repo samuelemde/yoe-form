@@ -52,7 +52,7 @@ type DateInput = BaseInput & {
 };
 
 type BooleanInput = BaseInput & {
-  type: "checkbox";
+  type: "checkbox" | "switch";
 };
 
 type SelectInput = BaseInput & {

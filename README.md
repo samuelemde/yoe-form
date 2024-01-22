@@ -107,6 +107,7 @@ The following variants are available:
 | ye-label         | applied to all labels.               |
 | ye-input         | applied to all fields of type input. |
 | ye-checkbox      | applied to all checkboxes.           |
+| ye-switch        | applied to all switches.             |
 | ye-select        | applied to the select trigger.       |
 | ye-radio         | applied to the radio-group options.  |
 | ye-radio-checked | applied to the selected radio item.  |

@@ -19,6 +19,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --emptyOutDir",
+    "shadcn:add": "npx shadcn-vue@latest add",
     "preview": "vite preview"
   },
   "dependencies": {

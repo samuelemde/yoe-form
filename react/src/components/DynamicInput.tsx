@@ -19,6 +19,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { Textarea } from "@/components/ui/textarea.tsx";
+import { Switch } from "@/components/ui/switch.tsx";
 
 type DynamicInputProps = {
   fieldConfig: YeFormField;
@@ -59,6 +60,16 @@ const DynamicInput = ({ fieldConfig, language, field }: DynamicInputProps) => {
             />
           </FormControl>
         );
+      case "switch":
+        return (
+          <FormControl className="flex flex-row items-start">
+            <Switch
+              checked={field.value}
+              onCheckedChange={field.onChange}
+              data-ye-element="switch"
+            />
+          </FormControl>
+        );
       case "select":
         return (
           <Select onValueChange={field.onChange} defaultValue={field.value}>
@@ -68,9 +79,9 @@ const DynamicInput = ({ fieldConfig, language, field }: DynamicInputProps) => {
               </SelectTrigger>
             </FormControl>
             <SelectContent>
-              {fieldConfig.options.map((option, index) => (
-                <SelectItem key={index} value={option.value}>
-                  {getTranslation(option.name, language)}
+              {fieldConfig.options.map(({ name, value }) => (
+                <SelectItem key={value} value={value}>
+                  {getTranslation(name, language)}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -83,17 +94,17 @@ const DynamicInput = ({ fieldConfig, language, field }: DynamicInputProps) => {
             onValueChange={field.onChange}
             defaultValue={field.value}
           >
-            {fieldConfig.options.map((option, index) => (
-              <FormItem key={index}>
+            {fieldConfig.options.map(({ name, value }) => (
+              <FormItem key={value}>
                 <FormLabel className="flex cursor-pointer gap-4 ">
                   <div
                     data-ye-element="radio"
                     className="flex items-center gap-4 rounded-md border border-slate-200 px-4 py-2 shadow-sm [&:has([data-state=checked])]:border-slate-400"
                   >
                     <FormControl>
-                      <RadioGroupItem value={option.value} />
+                      <RadioGroupItem value={value} />
                     </FormControl>
-                    {getTranslation(option.name, language)}
+                    {getTranslation(name, language)}
                   </div>
                 </FormLabel>
               </FormItem>
@@ -140,7 +151,14 @@ const DynamicInput = ({ fieldConfig, language, field }: DynamicInputProps) => {
           </Popover>
         );
       case "textarea":
-        return <Textarea placeholder={placeholder} data-ye-element="input" />;
+        return (
+          <Textarea
+            className="resize-none"
+            rows={6}
+            placeholder={placeholder}
+            data-ye-element="input"
+          />
+        );
       default:
         return null;
     }

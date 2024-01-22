@@ -71,6 +71,7 @@ const buildDateValidators = (input: YeFormField) => {
   return schema;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const buildBooleanValidators = (_input: YeFormField) => {
   return boolean();
 };
@@ -86,6 +87,7 @@ const validation: {
   textarea: buildStringValidators,
   number: buildNumberValidators,
   checkbox: buildBooleanValidators,
+  switch: buildBooleanValidators,
   select: buildStringValidators,
   radio: buildStringValidators,
   date: buildDateValidators,
@@ -122,6 +124,7 @@ const DefaultValue = {
   textarea: "",
   number: undefined,
   checkbox: false,
+  switch: false,
   select: "",
   radio: "",
   date: undefined,
@@ -137,10 +140,7 @@ export const buildDefaultValues = (rows: YeFormRow[]): FormValues => {
   }, {});
 };
 
-export const replacePlaceholders = (
-  str: string,
-  variables: Record<string, string | number | Date>,
-) => {
+export const replacePlaceholders = (str: string, variables: FormValues) => {
   return str.replace(/\{{2}(.*?)}{2}/g, (_, g) => {
     const value = variables[g];
 
@@ -171,7 +171,7 @@ export const getTranslation = (
 
 export const buildEmails = (
   emailConfig: EmailConfig,
-  values: Record<string, string | number | Date>,
+  values: FormValues,
   language: Language | undefined,
 ) => {
   const internalEmail: Email = {

@@ -19,6 +19,7 @@ export function yeFormTW(twConfig: Config) {
     addVariant("ye-label", '& [data-ye-element="label"]');
     addVariant("ye-input", '& [data-ye-element="input"]');
     addVariant("ye-checkbox", '& [data-ye-element="checkbox"]');
+    addVariant("ye-switch", '& [data-ye-element="switch"]');
     addVariant("ye-select", '& [data-ye-element="select"]');
     addVariant("ye-date", '& [data-ye-element="date"]');
     addVariant("ye-radio", '& [data-ye-element="radio"]');

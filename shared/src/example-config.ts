@@ -10,11 +10,15 @@ export const example: YeFormConfig = {
           type: "checkbox",
           label: {
             default: "Checkbox",
-            translations: {
-              fr: { translated: true, value: "Checkbox" },
-              it: { translated: true, value: "Checkbox" },
-              en: { translated: true, value: "Checkbox" },
-            },
+          },
+          required: false,
+          layout: { spanMobile: 3, spanDesktop: 3 },
+        },
+        {
+          name: "switch",
+          type: "switch",
+          label: {
+            default: "Switch",
           },
           required: false,
           layout: { spanMobile: 3, spanDesktop: 3 },
@@ -153,7 +157,7 @@ export const example: YeFormConfig = {
             },
           ],
           layout: {
-            spanMobile: 3,
+            spanMobile: 6,
             spanDesktop: 6,
           },
         },
@@ -287,7 +291,31 @@ export const example: YeFormConfig = {
           },
           required: true,
           layout: {
-            spanMobile: 3,
+            spanMobile: 6,
+            spanDesktop: 6,
+          },
+        },
+      ],
+    },
+    {
+      fields: [
+        {
+          name: "message",
+          type: "textarea",
+          label: {
+            default: "Nachricht",
+            translations: {
+              fr: { translated: true, value: "Message" },
+              it: { translated: true, value: "Messaggio" },
+              en: { translated: true, value: "Message" },
+            },
+          },
+          placeholder: {
+            default: "Beschreibe dein Anliegen...",
+          },
+          required: false,
+          layout: {
+            spanMobile: 6,
             spanDesktop: 6,
           },
         },
