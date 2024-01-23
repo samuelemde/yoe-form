@@ -1,22 +1,12 @@
 import type {
-  Email,
+  EmailHandler,
   Language,
+  RestHandler,
   YeFormConfig,
   YeFormField,
 } from "@yoe-form/shared";
 import type { ComponentType, FC } from "react";
 import type { ControllerRenderProps } from "react-hook-form";
-
-type EmailHandler = (
-  values: Record<string, unknown>,
-  internalEmail: Email,
-  confirmationEmail?: Email,
-) => Promise<void>;
-
-type RestHandler = (
-  url: string,
-  values: Record<string, unknown>,
-) => Promise<void>;
 
 type CustomDynamicInputComponent =
   | ComponentType<{

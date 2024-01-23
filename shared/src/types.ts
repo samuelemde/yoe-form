@@ -97,3 +97,11 @@ export type EmailConfig = {
 };
 
 export type FormValues = Record<string, string | number | Date | undefined>;
+
+export type EmailHandler = (
+  values: FormValues,
+  internalEmail?: Email,
+  confirmationEmail?: Email,
+) => Promise<void>;
+
+export type RestHandler = (values: FormValues, url: string) => Promise<void>;

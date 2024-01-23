@@ -19,23 +19,20 @@ import { vAutoAnimate } from "@formkit/auto-animate/vue";
 import {
   buildEmails,
   buildFormSchema,
-  Email,
+  EmailHandler,
   errorTranslations,
   getGridClasses,
   getTranslation,
   Language,
+  RestHandler,
   YeFormConfig,
 } from "@yoe-form/shared";
 import { cn } from "@/lib/utils.ts";
 
 export interface YeFormProps {
   config: YeFormConfig;
-  emailHandler?: (
-    values: unknown,
-    internalEmail: Email,
-    confirmationEmail?: Email,
-  ) => Promise<void>;
-  restHandler?: (url: string, values: unknown) => Promise<void>;
+  emailHandler?: EmailHandler;
+  restHandler?: RestHandler;
   language?: Language;
   button: Component;
   dynamicInput: Component;
@@ -71,7 +68,7 @@ const onSubmit = form.handleSubmit(async (values) => {
     );
     return emailHandler(values, internalEmail, confirmationEmail);
   } else if (submissionMethod === "rest" && restEndpoint && restHandler) {
-    return restHandler(restEndpoint, values);
+    return restHandler(values, restEndpoint);
   }
 });
 </script>

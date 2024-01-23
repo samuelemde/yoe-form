@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { Email, example } from "@yoe-form/shared";
+import type { EmailHandler, RestHandler } from "@yoe-form/shared";
+import { example } from "@yoe-form/shared";
 import YeForm from "@/components/YeForm.vue";
 
-const handleEmail = async (
-  _values: any,
-  _internalEmail: Email,
-  confirmationEmail?: Email,
+const handleEmail: EmailHandler = async (
+  _values,
+  _internalEmail,
+  confirmationEmail,
 ) => {
   alert(JSON.stringify(confirmationEmail));
 };
 
-const handleRestCall = async (url: string, values: any) => {
+const handleRestCall: RestHandler = async (values, url) => {
   alert(JSON.stringify({ url, ...values }));
 };
 </script>

@@ -31,25 +31,69 @@ npm install </path/to/vue-form-builder>
 ```
 
 ### Basic Usage
-```vue
-<script setup lang="ts">
-   import {type EmailConfig, YeForm} from "@yoe/form";
-   import {example} from "~/lib/example";
+There are two components exported from the lib: YeForm and YeFormCustom.
+YeForm comes with all the default components and is ready to use out of the box.
+If you want to use your own components, you can use YeFormCustom and pass in your own button and input components.
 
-   const handleEmail = async (emailConfig: EmailConfig, values: any) => {
-      alert(values);
-   };
+
+### Nuxt
+```vue
+
+<script setup lang="ts">
+  import {type EmailHandler, YeForm, YeFormCustom} from "@yoe-form/nuxt";
+
+  const handleEmail: EmailHandler = async (values, internalEmail, confirmationEmail) => {
+    alert(values);
+  };
 </script>
 
 <template>
-   <div class="mx-96">
-      <YeForm
-        :config="example"
-        :emailHandler="handleEmail"
-        language="de"
-      />
-   </div>
+  <div class="mx-96">
+    <YeForm
+      :config="config"
+      :emailHandler="handleEmail"
+      language="de"
+    />
+    <YeFormCustom 
+      :config="config"  
+      :emailHandler="handleEmail"
+      language="de"
+      button="CustomButton"
+      dynamicInput="CustomDynamicInput"
+    />
+  </div>
 </template>  
+```
+
+### React
+```typescript jsx
+import {type EmailHandler, YeForm, YeFormCustom} from "@yoe-form/react";
+
+const Form = () => {
+    const handleEmail: EmailHandler = async (values, internalEmail, confirmationEmail) => {
+        alert(values);
+    };
+    
+  return (
+    <>
+      <YeForm
+        config={config}
+        emailHandler={handleEmail}
+        language="de"
+        className="ye-button:bg-red-500 ye-button:hover:bg-red-300 ye-item:space-y-4 ye-radio-checked:border-blue-500"
+      />
+      <YeFormCustom
+          config={config}
+          emailHandler={handleEmail}
+          language="de"
+          className="ye-button:bg-red-500 ye-button:hover:bg-red-300 ye-item:space-y-4 ye-radio-checked:border-blue-500"
+          button={CustomButton}
+          dynamicInput={CustomDynamicInput}
+      />
+    </>
+   ) 
+}
+   
 ```
 
 ### Configuration
@@ -57,9 +101,9 @@ The YeForm accepts a couple of properties:
 ```typescript
 type YeFormProps = {
     config: FormConfig, // the actual config including all input fields
-    emailHandler: (emailConfig: EmailConfig, values: any) => Promise<void>, // a function that is called when the form is submitted and submission type is "email"
-    restHandler: (url: string, values: Record<string, unknown>,) => Promise<void>; // a function that is called when the form is submitted and submission type is "rest"
-    language: "en" | "de" | "fr" | "it", // the language of the form
+    emailHandler?: (emailConfig: EmailConfig, values: any) => Promise<void>, // a function that is called when the form is submitted and submission type is "email"
+    restHandler?: (url: string, values: Record<string, unknown>,) => Promise<void>; // a function that is called when the form is submitted and submission type is "rest"
+    language?: "en" | "de" | "fr" | "it", // the language of the form
     button?: Component, // optional button Component to be used for the submit button
     dyanmicInput?: Component, // optional dynamic input Component to be used for the dynamic input (see DyanmicInput)
     showLabels?: boolean, // whether to show labels for the input fields
@@ -70,13 +114,13 @@ type YeFormProps = {
 ## Styling
 To style the form components load the corresponding css file. 
 ```typescript
-import "@yoe/form/style.css";
+import "@yoe-form/react/style.css";
 ```
 #### Nuxt
 Add the file to the css array in your nuxt config.
 ```typescript
 export default defineNuxtConfig({
-  css: ["@yoe/form/style.css"],
+  css: ["@yoe-form/nuxt/style.css"],
   modules: [],
 });
 
@@ -85,7 +129,7 @@ export default defineNuxtConfig({
 The library exports a tailwind wrapper that includes additional variants that can be used to add some basic styling to the form.
 It also adds some grid classes to the safelist to make sure the form is displayed correctly.
 ```javascript
-import {yeFormTW} from '@yoe/form'
+import {yeFormTW} from '@yoe-form/react'
 
 /** @type {import('tailwindcss').Config} */
 export default yeFormTW({
@@ -114,41 +158,3 @@ The following variants are available:
 | ye-date          | applied to the date picker trigger.  |
 | ye-error         | applied to the error message.        |
 
-
-## Usage
-### Nuxt
-```vue
-<script setup lang="ts">
-  const handleEmail = () => {
-    alert("email sent");
-  };
-</script>
-
-<template>
-  <YeForm 
-    :config="config"
-    :emailHandler="handleEmail"
-    language="de"
-    class="ye-button:bg-red-500 ye-button:hover:bg-red-300 ye-item:space-y-4 ye-radio-checked:border-blue-500"
-  />
-</template>
-```
-
-### React
-```typescript jsx
-const Form = () => {
-    const handleEmail = () => {
-        alert("email sent");
-    };
-    
-  return (
-    <YeForm
-      config={config}
-      emailHandler={handleEmail}
-      language="de"
-      className="ye-button:bg-red-500 ye-button:hover:bg-red-300 ye-item:space-y-4 ye-radio-checked:border-blue-500"
-    />
-   ) 
-}
-   
-```

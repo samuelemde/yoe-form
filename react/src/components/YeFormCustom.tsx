@@ -46,8 +46,6 @@ const YeForm: FC<YeFormCustomProps> = ({
   // Since FormField is using a controlled component, we need to provide a default value for all fields.
   const defaultValues = buildDefaultValues(config.rows);
 
-  console.log("defaultValues", defaultValues);
-
   const form = useForm<FormValues>({
     resolver: yupResolver(formSchema),
     defaultValues,
@@ -70,7 +68,7 @@ const YeForm: FC<YeFormCustomProps> = ({
       config.restEndpoint &&
       restHandler
     ) {
-      return restHandler(config.restEndpoint, values);
+      return restHandler(values, config.restEndpoint);
     }
   });
   const ButtonComponent = button;
