@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 import dts from "vite-plugin-dts";
 import vue from "@vitejs/plugin-vue";
-import {visualizer} from  "rollup-plugin-visualizer";
+import { visualizer } from "rollup-plugin-visualizer";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,7 +12,7 @@ export default defineConfig({
       tsconfigPath: "tsconfig.build.json",
       cleanVueFileName: true,
     }),
-    visualizer()
+    visualizer(),
   ],
   build: {
     sourcemap: true,
@@ -23,7 +23,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["vue", "tailwindcss"],
+      external: ["vue", "tailwindcss", "h3"],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps

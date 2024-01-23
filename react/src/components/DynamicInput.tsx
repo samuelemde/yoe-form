@@ -21,7 +21,7 @@ import { Button } from "@/components/ui/button.tsx";
 import { Textarea } from "@/components/ui/textarea.tsx";
 import { Switch } from "@/components/ui/switch.tsx";
 
-type DynamicInputProps = {
+export type DynamicInputProps = {
   fieldConfig: YeFormField;
   language: Language;
   field: ControllerRenderProps;
@@ -136,16 +136,13 @@ const DynamicInput = ({ fieldConfig, language, field }: DynamicInputProps) => {
             <PopoverContent className="w-auto p-0" align="start">
               <Calendar
                 mode="single"
+                initialFocus
                 selected={field.value}
                 onSelect={field.onChange}
-                disabled={(date) =>
-                  date > new Date() || date < new Date("1900-01-01")
-                }
-                initialFocus
-                defaultMonth={new Date(2000, 0)}
+                defaultMonth={new Date(2000, 0)} // TODO: take from config
                 captionLayout="dropdown-buttons"
-                fromYear={1960}
-                toYear={2030}
+                fromYear={1960} // TODO: take from config
+                toYear={2030} // TODO: take from config
               />
             </PopoverContent>
           </Popover>

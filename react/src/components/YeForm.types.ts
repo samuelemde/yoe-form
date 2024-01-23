@@ -32,6 +32,9 @@ export type YeFormProps = {
   emailHandler?: EmailHandler;
   restHandler?: RestHandler;
   language?: Language;
-  button?: ComponentType;
-  dynamicInput?: CustomDynamicInputComponent;
+};
+
+export type YeFormCustomProps = YeFormProps & {
+  button: ComponentType;
+  dynamicInput: CustomDynamicInputComponent;
 };

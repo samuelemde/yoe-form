@@ -2,8 +2,8 @@
 import {
   SelectItem,
   SelectItemIndicator,
-  type SelectItemProps,
   SelectItemText,
+  type SelectItemProps,
 } from "radix-vue";
 import { CheckIcon } from "@radix-icons/vue";
 import { cn } from "@/lib/utils";
@@ -13,6 +13,7 @@ const props = defineProps<SelectItemProps & { class?: string }>();
 
 <template>
   <SelectItem
+    data-ye-element="YEYEYEY"
     v-bind="props"
     :class="
       cn(

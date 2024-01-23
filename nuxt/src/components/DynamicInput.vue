@@ -6,7 +6,6 @@ import { Input } from "./ui/input";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -22,15 +21,15 @@ import { cn } from "@/lib/utils.ts";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 
-export interface DynamicProps {
+export type DynamicInputProps = {
   field: YeFormField;
-  language: Language;
-  componentField: any; // can we narrow this type?
+  language?: Language;
+  componentField: any;
   value: any;
   handleChange: (value: any) => void;
-}
+};
 
-const { field, language } = defineProps<DynamicProps>();
+const { field, language } = defineProps<DynamicInputProps>();
 
 const placeholder = computed(() => getTranslation(field.placeholder, language));
 </script>
@@ -76,15 +75,13 @@ const placeholder = computed(() => getTranslation(field.placeholder, language));
         </SelectTrigger>
       </FormControl>
       <SelectContent>
-        <SelectGroup>
-          <SelectItem
-            v-for="(option, index) in field.options"
-            :value="option.value"
-            :key="index"
-          >
-            {{ getTranslation(option.name, language) }}
-          </SelectItem>
-        </SelectGroup>
+        <SelectItem
+          v-for="(option, index) in field.options"
+          :value="option.value"
+          :key="index"
+        >
+          {{ getTranslation(option.name, language) }}
+        </SelectItem>
       </SelectContent>
     </Select>
   </template>

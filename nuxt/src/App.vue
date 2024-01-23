@@ -16,15 +16,15 @@ const handleRestCall = async (url: string, values: any) => {
 </script>
 
 <template>
-  <div class="flex justify-center w-full h-full">
-    <div class="flex flex-col items-center justify-center w-1/2">
+  <div class="flex h-full w-full justify-center">
+    <div class="flex w-1/2 flex-col items-center justify-center">
       <h1 class="text-5xl">Nuxt</h1>
       <YeForm
         :config="example"
         :emailHandler="handleEmail"
         :restHandler="handleRestCall"
         language="de"
-        class="ye-radio-checked:bg-slate-50"
+        class="ye-button:bg-green-600 ye-radio-checked:bg-slate-50"
       />
     </div>
   </div>

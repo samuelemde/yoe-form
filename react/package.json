@@ -16,6 +16,7 @@
       "require": "./dist/index.cjs"
     }
   },
+  "sideEffects": false,
   "scripts": {
     "dev": "vite",
     "build": "vite build --emptyOutDir",
